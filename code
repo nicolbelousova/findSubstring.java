@@ -1,0 +1,24 @@
+function substringPosition(str, substring) {
+    return str.indexOf(substring);
+}
+
+console.log(substringPosition("hello world", "world")); // prints 6
+console.log(substringPosition("javascript", "script")); // prints 4
+
+
+function substringPosition(str, substring) {
+    let i = 0, j = 0, pos = -1;
+    while (i < str.length) {
+        if (str.charAt(i) === substring.charAt(j)) {
+            if (j === 0) {
+                pos = i;
+            }
+            j++;
+        } else if (j !== 0) {
+            i = i - j + 1;
+            j = 0;
+        }
+        i++;
+    }
+    return (j === substring.length) ? pos : -1;
+}
